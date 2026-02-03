@@ -1,30 +1,32 @@
-import random
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-def number_guessing_game():
-    # Pick a secret number (using randomizer)
-    secret_number = random.randint(1, 100)
-    # secret_number = 42  # you can hardcode if you prefer
+using namespace std;
 
-    print("Welcome to the Number Guessing Game!")
-    print("I've picked a secret number between 1 and 100. Try to guess it.")
+int main() {
+    // Seed the random number generator
+    srand(time(0));
+    
+    // Generate a secret number between 1 and 100
+    int secretNumber = rand() % 100 + 1;
+    int playerGuess = 0;
 
-    attempts = 0
-    while True:
-        try:
-            # Get player's guess
-            guess = int(input("Enter your guess: "))
-            attempts += 1
+    cout << "Welcome to the Number Guessing Game!" << endl;
 
-            # Provide hints
-            if guess < secret_number:
-                print("Too Low!")
-            elif guess > secret_number:
-                print("Too High!")
-            else:
-                print(f"Congratulations! You guessed the secret number in {attempts} attempts.")
-                break
-        except ValueError:
-            print("Please enter a valid number.")
+    while (true) {
+        cout << "Enter your guess (1-100): ";
+        cin >> playerGuess;
 
-# Run the game
-number_guessing_game()
+        if (playerGuess == secretNumber) {
+            cout << "Congratulations! You guessed the secret number!" << endl;
+            break;
+        } else if (playerGuess > secretNumber) {
+            cout << "Too High! Try again." << endl;
+        } else {
+            cout << "Too Low! Try again." << endl;
+        }
+    }
+
+    return 0;
+}
