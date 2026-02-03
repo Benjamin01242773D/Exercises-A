@@ -27,4 +27,4 @@ def number_guessing_game():
             print("Please enter a valid number.")
 
 # Run the game
-number_guessing_game()
+number_guessing_game() 
